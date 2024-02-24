@@ -7,8 +7,6 @@ build/
 Java_programming.iml
 gradlew
 gradlew.bat
-gradle
-.idea
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
