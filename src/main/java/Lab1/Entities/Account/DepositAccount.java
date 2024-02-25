@@ -2,6 +2,7 @@ package Lab1.Entities.Account;
 
 import Lab1.Models.Client.Client;
 import Lab1.Models.Transaction.Transaction;
+import Lab1.Services.Validator;
 
 import java.util.List;
 
@@ -28,6 +29,8 @@ public class DepositAccount extends Account {
 
     @Override
     public void transfer(Account account, double amount) {
+        Validator.checkIfNull(account);
+
         System.out.println("Доступ к счету запрещен до окончания срока депозита");
     }
 

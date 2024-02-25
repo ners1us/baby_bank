@@ -2,6 +2,7 @@ package Lab1.Entities.Account;
 
 import Lab1.Models.Client.Client;
 import Lab1.Models.Transaction.Transaction;
+import Lab1.Services.Validator;
 
 import java.util.List;
 public class DebitAccount extends Account {
@@ -26,6 +27,8 @@ public class DebitAccount extends Account {
 
     @Override
     public void transfer(Account account, double amount) {
+        Validator.checkIfNull(account);
+
         if (balance >= amount) {
             balance -= amount;
             account.deposit(amount);
