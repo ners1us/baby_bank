@@ -4,6 +4,7 @@ import Lab1.Entities.Bank.Bank;
 import Lab1.Models.Client.Client;
 import Lab1.Models.ValueObjects.Name;
 import Lab1.Models.ValueObjects.Surname;
+import Lab1.Services.Validator;
 
 import java.util.Scanner;
 
@@ -12,6 +13,8 @@ public class AddClientCommandHandler extends CommandHandler {
     private final Scanner scanner;
 
     public AddClientCommandHandler(Bank bank) {
+        Validator.checkIfNull(bank);
+
         this.bank = bank;
         scanner = new Scanner(System.in);
     }

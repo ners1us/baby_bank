@@ -1,5 +1,7 @@
 package Lab1.Entities.CommandHandler;
 
+import Lab1.Services.Validator;
+
 public abstract class CommandHandler {
     private CommandHandler nextHandler;
 
@@ -8,6 +10,8 @@ public abstract class CommandHandler {
     }
 
     public void handleCommand(int choice){
+        Validator.checkIfBelowZero(choice);
+
         if (canHandleCommand(choice)) {
             processCommand(choice);
         } else if (nextHandler != null) {
