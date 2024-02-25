@@ -4,6 +4,7 @@ import Lab1.Models.ValueObjects.Address;
 import Lab1.Models.ValueObjects.Name;
 import Lab1.Models.ValueObjects.PassportNumber;
 import Lab1.Models.ValueObjects.Surname;
+import Lab1.Services.Validator;
 
 public class Client {
     private Name firstName;
@@ -12,6 +13,9 @@ public class Client {
     private PassportNumber passportNumber;
 
     public Client(Name firstName, Surname surName) {
+        Validator.checkIfNull(firstName);
+        Validator.checkIfNull(surName);
+
         this.firstName = firstName;
         this.surName = surName;
     }
