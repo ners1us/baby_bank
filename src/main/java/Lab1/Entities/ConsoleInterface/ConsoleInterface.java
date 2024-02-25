@@ -3,6 +3,7 @@ package Lab1.Entities.ConsoleInterface;
 import Lab1.Entities.Bank.Bank;
 import Lab1.Entities.CommandHandler.*;
 import Lab1.Models.Notifications.BankNotification;
+import Lab1.Services.Validator;
 
 import java.util.Scanner;
 
@@ -13,6 +14,8 @@ public class ConsoleInterface implements BankNotification {
     private final CommandHandler commandHandler;
 
     public ConsoleInterface(Bank bank) {
+        Validator.checkIfNull(bank);
+
         this.bank = bank;
         scanner = new Scanner(System.in);
         commandHandler = buildCommandChain();
