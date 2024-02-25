@@ -3,6 +3,7 @@ package Lab1.Entities.Bank;
 import Lab1.Models.Client.Client;
 import Lab1.Models.Notifications.BankNotification;
 import Lab1.Models.ValueObjects.Name;
+import Lab1.Services.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,10 +54,14 @@ public class Bank {
     }
 
     public void addClient(Client client) {
+        Validator.checkIfNull(client);
+
         clients.add(client);
     }
 
     public void removeClient(Client client) {
+        Validator.checkIfNull(client);
+
         clients.remove(client);
     }
 
