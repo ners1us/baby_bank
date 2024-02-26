@@ -1,5 +1,6 @@
 package Lab1.Entities.CommandHandler;
 
+import Lab1.Entities.Account.Account;
 import Lab1.Entities.Account.CreditAccount;
 import Lab1.Entities.Account.DebitAccount;
 import Lab1.Entities.Account.DepositAccount;
@@ -10,12 +11,12 @@ import Lab1.Services.Validator;
 
 import java.util.Scanner;
 
-public class RegisterAccountCommandHandler extends CommandHandler{
+public class AddAccountCommandHandler extends CommandHandler{
 
     private final Bank bank;
     private final Scanner scanner;
 
-    public RegisterAccountCommandHandler(Bank bank) {
+    public AddAccountCommandHandler(Bank bank) {
         Validator.checkIfNull(bank);
 
         this.bank = bank;
@@ -42,16 +43,35 @@ public class RegisterAccountCommandHandler extends CommandHandler{
             System.out.print("Выберите вид счёта:");
             System.out.print("1. Депозитный");
             System.out.print("2. Дебетовый");
-            System.out.print("3. Кредитный");
+            System.out.println("3. Кредитный");
 
             int accountChoice = scanner.nextInt();
             if (accountChoice == 1) {
                 int initialAmount = 0;
-                bank.addAccount(new DepositAccount(client, bank.getDepositInterestRate(), initialAmount));
+                Account newAccount = new DepositAccount(client, bank.getDepositInterestRate(), initialAmount);
+
+                if (SearchEngine.checkIfAccountExists(newAccount, bank)) {
+                    System.out.println("Такой аккаунт уже существует!");
+                } else {
+                    bank.addAccount(newAccount);
+                    System.out.println("Аккаунт успешно добавлен");
+                }
             } else if (accountChoice == 2) {
-                bank.addAccount(new DebitAccount(client, bank.getDebitInterestRate()));
+                Account newAccount = new DebitAccount(client, bank.getDebitInterestRate());
+                if (SearchEngine.checkIfAccountExists(newAccount, bank)) {
+                    System.out.println("Такой аккаунт уже существует!");
+                } else {
+                    bank.addAccount(newAccount);
+                    System.out.println("Аккаунт успешно добавлен");
+                }
             } else if (accountChoice == 3) {
-                bank.addAccount(new CreditAccount(client, bank.getCreditLimit(), bank.getCreditCommission()));
+                Account newAccount = new CreditAccount(client, bank.getCreditLimit(), bank.getCreditCommission());
+                if (SearchEngine.checkIfAccountExists(newAccount, bank)) {
+                    System.out.println("Такой аккаунт уже существует!");
+                } else {
+                    bank.addAccount(newAccount);
+                    System.out.println("Аккаунт успешно добавлен");
+                }
             } else {
                 System.out.println("Некорректный выбор!");
             }
