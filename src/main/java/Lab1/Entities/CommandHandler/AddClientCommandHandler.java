@@ -4,6 +4,7 @@ import Lab1.Entities.Bank.Bank;
 import Lab1.Models.Client.Client;
 import Lab1.Models.ValueObjects.Name;
 import Lab1.Models.ValueObjects.Surname;
+import Lab1.Services.SearchEngine;
 import Lab1.Services.Validator;
 
 import java.util.Scanner;
@@ -33,9 +34,13 @@ public class AddClientCommandHandler extends CommandHandler {
         String surName = scanner.next();
 
         Client client = new Client(new Name(firstName), new Surname(surName));
-        bank.addClient(client);
 
-        System.out.println("Клиент успешно добавлен");
+        if (SearchEngine.checkIfClientExists(client, bank)) {
+            System.out.println("Такой клиент уже существует!");
+        } else {
+            bank.addClient(client);
+
+            System.out.println("Клиент успешно добавлен");
+        }
     }
-
 }
