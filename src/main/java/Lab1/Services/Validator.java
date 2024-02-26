@@ -9,7 +9,6 @@ public class Validator {
     public static void checkIfBelowZero(Object object) {
         if (object instanceof Integer) {
             int intObject = (Integer) object;
-
             if (intObject < 0)
                 throw new IllegalArgumentException("Value shouldn't be below zero!");
 
