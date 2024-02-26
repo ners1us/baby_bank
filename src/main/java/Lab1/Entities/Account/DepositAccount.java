@@ -10,8 +10,8 @@ public class DepositAccount extends Account {
     private double interestRate;
     private double initialAmount;
 
-    public DepositAccount(Client owner, List<Transaction> transactions, double interestRate, double initialAmount) {
-        super(owner, transactions);
+    public DepositAccount(Client owner, double interestRate, double initialAmount) {
+        super(owner);
         this.interestRate = interestRate;
         this.initialAmount = initialAmount;
         balance = initialAmount;

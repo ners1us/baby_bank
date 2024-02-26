@@ -10,8 +10,8 @@ public class CreditAccount extends Account {
     private final double creditLimit;
     private double commission;
 
-    public CreditAccount(Client owner,List<Transaction> transactions, double creditLimit, double commission) {
-        super(owner, transactions);
+    public CreditAccount(Client owner, double creditLimit, double commission) {
+        super(owner);
         this.creditLimit = creditLimit;
         this.commission = commission;
     }

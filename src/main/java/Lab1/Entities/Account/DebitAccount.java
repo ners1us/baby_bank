@@ -8,8 +8,8 @@ import java.util.List;
 public class DebitAccount extends Account {
     private double interestRate;
 
-    public DebitAccount(Client owner, double interestRate, List<Transaction> transactions) {
-        super(owner, transactions);
+    public DebitAccount(Client owner, double interestRate) {
+        super(owner);
         this.interestRate = interestRate;
     }
 
@@ -33,5 +33,13 @@ public class DebitAccount extends Account {
             balance -= amount;
             account.deposit(amount);
         }
+    }
+
+    public double getInterestRate() {
+        return interestRate;
+    }
+
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
     }
 }

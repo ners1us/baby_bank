@@ -4,6 +4,7 @@ import Lab1.Models.Client.Client;
 import Lab1.Models.Transaction.Transaction;
 import Lab1.Services.Validator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Account {
@@ -12,11 +13,11 @@ public abstract class Account {
 
     private final List<Transaction> transactions;
 
-    protected Account(Client owner, List<Transaction> transactions) {
+    protected Account(Client owner) {
         Validator.checkIfNull(owner);
 
         this.owner = owner;
-        this.transactions = transactions;
+        this.transactions = new ArrayList<>();
     }
 
     public abstract void deposit(double amount);
