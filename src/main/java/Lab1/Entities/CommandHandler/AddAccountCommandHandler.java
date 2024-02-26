@@ -40,9 +40,9 @@ public class AddAccountCommandHandler extends CommandHandler{
         if (client == null) {
             System.out.println("Клиент не найден");
         } else {
-            System.out.print("Выберите вид счёта:");
-            System.out.print("1. Депозитный");
-            System.out.print("2. Дебетовый");
+            System.out.println("Выберите вид счёта:");
+            System.out.println("1. Депозитный");
+            System.out.println("2. Дебетовый");
             System.out.println("3. Кредитный");
 
             int accountChoice = scanner.nextInt();
