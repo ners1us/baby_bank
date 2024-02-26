@@ -1,5 +1,6 @@
 package Lab1.Entities.Bank;
 
+import Lab1.Entities.Account.Account;
 import Lab1.Models.Client.Client;
 import Lab1.Models.Notifications.BankNotification;
 import Lab1.Models.ValueObjects.Name;
@@ -13,16 +14,20 @@ public class Bank {
     private double debitInterestRate;
     private double depositInterestRate;
     private double creditCommission;
+    private double creditLimit;
     private final List<Client> clients;
     private final List<BankNotification> notifications;
+    private final List<Account> accounts;
 
-    public Bank(Name name, double debitInterestRate, double depositInterestRate, double creditCommission) {
+    public Bank(Name name, double debitInterestRate, double depositInterestRate, double creditCommission, double creditLimit) {
         this.name = name;
         this.debitInterestRate = debitInterestRate;
         this.depositInterestRate = depositInterestRate;
         this.creditCommission = creditCommission;
+        this.creditLimit = creditLimit;
         clients = new ArrayList<>();
         notifications = new ArrayList<>();
+        accounts = new ArrayList<>();
     }
 
     public void setDebitInterestRate(double debitInterestRate) {
@@ -59,6 +64,12 @@ public class Bank {
         clients.add(client);
     }
 
+    public void addAccount(Account account){
+        Validator.checkIfNull(account);
+
+        accounts.add(account);
+    }
+
     public void removeClient(Client client) {
         Validator.checkIfNull(client);
 
@@ -73,7 +84,7 @@ public class Bank {
         return name;
     }
 
-    public void setName(Name name) {
+    private void setName(Name name) {
         this.name = name;
     }
 
@@ -87,5 +98,17 @@ public class Bank {
 
     public double getCreditCommission() {
         return creditCommission;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public double getCreditLimit() {
+        return creditLimit;
+    }
+
+    private void setCreditLimit(double creditLimit) {
+        this.creditLimit = creditLimit;
     }
 }
