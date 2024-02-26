@@ -2,6 +2,7 @@ package Lab1.Entities.CommandHandler;
 
 import Lab1.Entities.Bank.Bank;
 import Lab1.Models.Client.Client;
+import Lab1.Services.SearchEngine;
 import Lab1.Services.Validator;
 
 import java.util.Scanner;
@@ -30,7 +31,7 @@ public class RemoveClientCommandHandler extends CommandHandler{
         System.out.print("Введите фамилию клиента: ");
         String lastName = scanner.next();
 
-        Client client = findClient(firstName, lastName);
+        Client client = SearchEngine.findClient(firstName, lastName, bank);
 
         if (client == null) {
             System.out.println("Клиент не найден");
@@ -40,12 +41,5 @@ public class RemoveClientCommandHandler extends CommandHandler{
         }
     }
 
-    private Client findClient(String firstName, String lastName) {
-        for (Client client : bank.getClients()) {
-            if (client.getFirstName().getValue().equals(firstName) && client.getSurName().getValue().equals(lastName)) {
-                return client;
-            }
-        }
-        return null;
-    }
+
 }

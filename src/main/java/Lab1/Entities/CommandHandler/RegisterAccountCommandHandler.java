@@ -5,6 +5,7 @@ import Lab1.Entities.Account.DebitAccount;
 import Lab1.Entities.Account.DepositAccount;
 import Lab1.Entities.Bank.Bank;
 import Lab1.Models.Client.Client;
+import Lab1.Services.SearchEngine;
 import Lab1.Services.Validator;
 
 import java.util.Scanner;
@@ -33,7 +34,8 @@ public class RegisterAccountCommandHandler extends CommandHandler{
         System.out.print("Введите фамилию клиента: ");
         String lastName = scanner.next();
 
-        Client client = findClient(firstName, lastName);
+        Client client = SearchEngine.findClient(firstName, lastName, bank);
+
         if (client == null) {
             System.out.println("Клиент не найден");
         } else {
@@ -55,14 +57,5 @@ public class RegisterAccountCommandHandler extends CommandHandler{
             }
 
         }
-    }
-
-    private Client findClient(String firstName, String lastName) {
-        for (Client client : bank.getClients()) {
-            if (client.getFirstName().getValue().equals(firstName) && client.getSurName().getValue().equals(lastName)) {
-                return client;
-            }
-        }
-        return null;
     }
 }
