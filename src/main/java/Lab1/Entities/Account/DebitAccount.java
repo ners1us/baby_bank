@@ -4,6 +4,7 @@ import Lab1.Models.Client.Client;
 import Lab1.Models.Transaction.Transaction;
 import Lab1.Services.Validator;
 
+import java.util.Date;
 import java.util.List;
 public class DebitAccount extends Account {
     private double interestRate;
@@ -34,7 +35,15 @@ public class DebitAccount extends Account {
             account.deposit(amount);
         }
     }
+    @Override
+    public void calculateInterestAndCommission(Date startDate, Date endDate) {
+        long days = (endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000);
+        double interest = balance * interestRate / 36500 * days;
+        setTotalInterest(getTotalInterest() + interest);
 
+        double commissionAmount = balance * 0.25 / 100;
+        setTotalCommission(getTotalCommission() + commissionAmount);
+    }
     public double getInterestRate() {
         return interestRate;
     }
