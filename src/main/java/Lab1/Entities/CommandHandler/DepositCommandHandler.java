@@ -47,7 +47,7 @@ public class DepositCommandHandler extends CommandHandler{
             System.out.println("Депозит успешно совершен");
 
         } else {
-            System.out.println("Счет не является депозитным");
+            System.out.println("Некорректный вид счёта!");
         }
     }
 }
