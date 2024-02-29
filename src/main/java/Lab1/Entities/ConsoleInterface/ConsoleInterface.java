@@ -30,10 +30,10 @@ public class ConsoleInterface implements BankNotification {
         while (true) {
             System.out.println("1. Добавить клиента");
             System.out.println("2. Удалить клиента");
+            System.out.println("3. Добавить аккаунт");
             System.out.println("3. Изменить проценты на дебетовые счета");
             System.out.println("4. Изменить проценты на депозитные счета");
             System.out.println("5. Изменить комиссию на кредитные счета");
-            System.out.println("6. Добавить аккаунт");
             System.out.println("7. Сделать депозит");
             System.out.println("0. Выйти");
 

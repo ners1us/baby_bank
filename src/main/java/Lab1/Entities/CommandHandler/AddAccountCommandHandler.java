@@ -24,7 +24,7 @@ public class AddAccountCommandHandler extends CommandHandler{
     }
     @Override
     public boolean canHandleCommand(int choice) {
-        return choice == 6;
+        return choice == 3;
     }
 
     @Override

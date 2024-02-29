@@ -18,7 +18,7 @@ public class UpdateDepositInterestCommandHandler extends CommandHandler {
 
     @Override
     public boolean canHandleCommand(int choice) {
-        return choice == 4;
+        return choice == 5;
     }
 
     @Override

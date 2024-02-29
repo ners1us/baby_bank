@@ -17,7 +17,7 @@ public class UpdateCreditCommissionCommandHandler extends CommandHandler {
 
     @Override
     public boolean canHandleCommand(int choice) {
-        return choice == 5;
+        return choice == 6;
     }
 
     @Override

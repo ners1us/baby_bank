@@ -18,7 +18,7 @@ public class UpdateDebitInterestCommandHandler extends CommandHandler {
 
     @Override
     public boolean canHandleCommand(int choice) {
-        return choice == 3;
+        return choice == 4;
     }
 
     @Override
