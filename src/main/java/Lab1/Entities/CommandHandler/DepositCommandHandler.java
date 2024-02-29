@@ -43,7 +43,7 @@ public class DepositCommandHandler extends CommandHandler{
             System.out.print("Введите, сколько денег вы хотите положить: ");
             int depositAmount = scanner.nextInt();
             Transaction transaction = new Transaction(account, depositAmount);
-            transaction.execute();
+            account.executeDepositTransaction(transaction);
             System.out.println("Депозит успешно совершен");
 
         } else {
