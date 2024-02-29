@@ -25,7 +25,7 @@ public abstract class Account {
     public abstract void withdraw(double amount);
 
     public abstract void transfer(Account account, double amount);
-    public void cancelTransaction(Transaction transaction) {
+    public void cancelDepositTransaction(Transaction transaction) {
         Validator.checkIfNull(transaction);
 
         if (transactions.contains(transaction)) {
@@ -34,12 +34,15 @@ public abstract class Account {
         }
     }
 
-    public void executeTransaction(Transaction transaction) {
+    public void executeDepositTransaction(Transaction transaction) {
         Validator.checkIfNull(transaction);
 
         transaction.execute();
         transactions.add(transaction);
     }
 
+    public Client getClient() {
+        return owner;
+    }
 
 }
