@@ -19,7 +19,6 @@ public class Transaction {
 
     public void cancel() {
         if (isExecuted) {
-            //TODO: withdraw from history
             account.withdraw(amount);
             isExecuted = false;
         }
