@@ -30,19 +30,16 @@ public class Bank {
         accounts = new ArrayList<>();
     }
 
-    public void setDebitInterestRate(double debitInterestRate) {
+    private void setDebitInterestRate(double debitInterestRate) {
         this.debitInterestRate = debitInterestRate;
-        notifyClients("Изменены проценты на дебетовые счета");
     }
 
-    public void setDepositInterestRate(double depositInterestRate) {
+    private void setDepositInterestRate(double depositInterestRate) {
         this.depositInterestRate = depositInterestRate;
-        notifyClients("Изменены проценты на депозитные счета");
     }
 
-    public void setCreditCommission(double creditCommission) {
+    private void setCreditCommission(double creditCommission) {
         this.creditCommission = creditCommission;
-        notifyClients("Изменена комиссия на кредитные счета");
     }
     public void subscribe(BankNotification notification) {
         notifications.add(notification);

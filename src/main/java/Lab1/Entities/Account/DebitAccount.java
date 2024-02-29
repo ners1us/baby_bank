@@ -39,7 +39,7 @@ public class DebitAccount extends Account {
         return interestRate;
     }
 
-    public void setInterestRate(double interestRate) {
+    private void setInterestRate(double interestRate) {
         this.interestRate = interestRate;
     }
 }

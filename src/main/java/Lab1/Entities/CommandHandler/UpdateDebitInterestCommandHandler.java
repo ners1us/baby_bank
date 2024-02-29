@@ -6,7 +6,7 @@ import Lab1.Services.Validator;
 import java.util.Scanner;
 
 public class UpdateDebitInterestCommandHandler extends CommandHandler {
-    private final Bank bank;
+    private Bank bank;
     private final Scanner scanner;
 
     public UpdateDebitInterestCommandHandler(Bank bank) {
@@ -26,7 +26,9 @@ public class UpdateDebitInterestCommandHandler extends CommandHandler {
         System.out.print("Введите новый процент на дебетовые счета: ");
         double interest = scanner.nextDouble();
 
-        bank.setDebitInterestRate(interest);
+        bank = new Bank(bank.getName(), interest, bank.getDepositInterestRate(), bank.getCreditCommission(), bank.getCreditLimit());
+        bank.notifyClients("Изменены проценты на дебетовые счета");
+
         System.out.println("Процент на дебетовые счета обновлен");
     }
 }

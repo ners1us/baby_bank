@@ -6,7 +6,7 @@ import Lab1.Services.Validator;
 import java.util.Scanner;
 
 public class UpdateCreditCommissionCommandHandler extends CommandHandler {
-    private final Bank bank;
+    private Bank bank;
     private final Scanner scanner;
 
     public UpdateCreditCommissionCommandHandler(Bank bank) {
@@ -25,7 +25,9 @@ public class UpdateCreditCommissionCommandHandler extends CommandHandler {
         System.out.print("Введите новую комиссию на кредитные счета: ");
         double commission = scanner.nextDouble();
 
-        bank.setCreditCommission(commission);
+        bank = new Bank(bank.getName(), bank.getDebitInterestRate(), bank.getDepositInterestRate(), commission, bank.getCreditLimit());
+        bank.notifyClients("Изменена комиссия на кредитные счета");
+
         System.out.println("Комиссия на кредитные счета обновлена");
     }
 }
