@@ -34,6 +34,7 @@ public class ConsoleInterface implements BankNotification {
             System.out.println("4. Изменить проценты на депозитные счета");
             System.out.println("5. Изменить комиссию на кредитные счета");
             System.out.println("6. Добавить аккаунт");
+            System.out.println("7. Сделать депозит");
             System.out.println("0. Выйти");
 
             int choice = scanner.nextInt();
@@ -56,12 +57,14 @@ public class ConsoleInterface implements BankNotification {
         CommandHandler updateDepositInterestHandler = new UpdateDepositInterestCommandHandler(bank);
         CommandHandler updateCreditCommissionHandler = new UpdateCreditCommissionCommandHandler(bank);
         CommandHandler addAccountCommandHandler = new AddAccountCommandHandler(bank);
+        CommandHandler depositCommandHandler = new DepositCommandHandler(bank);
 
         addClientHandler.setNextHandler(removeClientHandler);
         removeClientHandler.setNextHandler(updateDebitInterestHandler);
         updateDebitInterestHandler.setNextHandler(updateDepositInterestHandler);
         updateDepositInterestHandler.setNextHandler(updateCreditCommissionHandler);
         updateCreditCommissionHandler.setNextHandler(addAccountCommandHandler);
+        addAccountCommandHandler.setNextHandler(depositCommandHandler);
 
         return addClientHandler;
     }
