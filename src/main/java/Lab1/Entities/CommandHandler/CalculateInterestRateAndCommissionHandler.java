@@ -1,10 +1,8 @@
 package Lab1.Entities.CommandHandler;
 
 import Lab1.Entities.Account.Account;
-import Lab1.Entities.Account.DepositAccount;
 import Lab1.Entities.Bank.Bank;
 import Lab1.Models.Client.Client;
-import Lab1.Models.Transaction.Transaction;
 import Lab1.Services.SearchEngine;
 import Lab1.Services.Validator;
 

@@ -3,12 +3,12 @@ package Lab1.Models.Transaction;
 import Lab1.Entities.Account.Account;
 import Lab1.Services.Validator;
 
-public class Transaction {
+public class DepositTransaction {
     private final Account account;
     private double amount;
     private boolean isExecuted;
 
-    public Transaction(Account account, double amount) {
+    public DepositTransaction(Account account, double amount) {
         Validator.checkIfNull(account);
         Validator.checkIfBelowZero(amount);
 

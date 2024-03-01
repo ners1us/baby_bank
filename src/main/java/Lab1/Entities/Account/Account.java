@@ -1,7 +1,7 @@
 package Lab1.Entities.Account;
 
 import Lab1.Models.Client.Client;
-import Lab1.Models.Transaction.Transaction;
+import Lab1.Models.Transaction.DepositTransaction;
 import Lab1.Services.Validator;
 
 import java.util.ArrayList;
@@ -14,13 +14,13 @@ public abstract class Account {
     private double totalInterest;
     private double totalCommission;
 
-    private final List<Transaction> transactions;
+    private final List<DepositTransaction> depositTransactions;
 
     protected Account(Client owner) {
         Validator.checkIfNull(owner);
 
         this.owner = owner;
-        this.transactions = new ArrayList<>();
+        this.depositTransactions = new ArrayList<>();
         this.totalInterest = 0;
         this.totalCommission = 0;
     }
@@ -32,20 +32,20 @@ public abstract class Account {
     public abstract void transfer(Account account, double amount);
 
     public abstract void calculateInterestAndCommission(Date startDate, Date endDate);
-    public void cancelDepositTransaction(Transaction transaction) {
-        Validator.checkIfNull(transaction);
+    public void cancelDepositTransaction(DepositTransaction depositTransaction) {
+        Validator.checkIfNull(depositTransaction);
 
-        if (transactions.contains(transaction)) {
-            transaction.cancel();
-            transactions.remove(transaction);
+        if (depositTransactions.contains(depositTransaction)) {
+            depositTransaction.cancel();
+            depositTransactions.remove(depositTransaction);
         }
     }
 
-    public void executeDepositTransaction(Transaction transaction) {
-        Validator.checkIfNull(transaction);
+    public void executeDepositTransaction(DepositTransaction depositTransaction) {
+        Validator.checkIfNull(depositTransaction);
 
-        transaction.execute();
-        transactions.add(transaction);
+        depositTransaction.execute();
+        depositTransactions.add(depositTransaction);
     }
 
     public Client getClient() {

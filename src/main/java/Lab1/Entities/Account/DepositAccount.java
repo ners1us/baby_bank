@@ -1,11 +1,9 @@
 package Lab1.Entities.Account;
 
 import Lab1.Models.Client.Client;
-import Lab1.Models.Transaction.Transaction;
 import Lab1.Services.Validator;
 
 import java.util.Date;
-import java.util.List;
 
 public class DepositAccount extends Account {
     private double interestRate;
